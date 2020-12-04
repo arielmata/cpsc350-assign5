@@ -18,14 +18,16 @@ AffiliateDriver::AffiliateDriver(){
   numStudents = 0;
   masterStudent = new BST<Student>;
   masterFaculty = new BST<Faculty>;
-  rollbackStack = new GenStack<int>; //stores deletes and inserts
+  studentStack = new GenStack<Student>;
+  facultyStack = new GenStack<Faculty>;
 }
 
 // Destructor
 AffiliateDriver::~AffiliateDriver(){
   delete masterStudent;
   delete masterFaculty;
-  delete rollbackStack;
+  delete studentStack;
+  delete facultyStack;
 }
 
 
@@ -395,6 +397,13 @@ void AffiliateDriver::printAdvisees(){
 
 // Adds a new student to the database
 void AffiliateDriver::addStudent(){
+  //rollback
+  //BST<Student> *ms = new BST<Student>;
+  //ms = masterStudent
+  //studentStack.push(ms);
+  //BST<Faculty> *mf = new BST<Faculty>;
+  //mf = masterFaculty
+  //facultyStack.push(mf);
   int studentID;
   string name;
   string level;
@@ -529,6 +538,13 @@ void AffiliateDriver::addStudent(){
 // Prompts for a student's ID#, and deletes a student from database as well as
 // removing the student from a faculty advisor
 void AffiliateDriver::deleteStudent(){
+  //rollback
+  //BST<Student> *ms = new BST<Student>;
+  //ms = masterStudent
+  //studentStack.push(ms);
+  //BST<Faculty> *mf = new BST<Faculty>;
+  //mf = masterFaculty
+  //facultyStack.push(mf);
   int sID = checkID("student");
   if (masterStudent->searchNode(sID)){
     int aID = masterStudent->returnValue(sID)->getAdvisorID();
@@ -545,6 +561,13 @@ void AffiliateDriver::deleteStudent(){
 
 // Adds a new faculty member to the database
 void AffiliateDriver::addFaculty(){
+  //rollback
+  //BST<Student> *ms = new BST<Student>;
+  //ms = masterStudent
+  //studentStack.push(ms);
+  //BST<Faculty> *mf = new BST<Faculty>;
+  //mf = masterFaculty
+  //facultyStack.push(mf);
   int facultyID;
   string name;
   string level;
@@ -666,6 +689,13 @@ void AffiliateDriver::addFaculty(){
 
 // Deletes a faculty member given the ID# and reassigns students faculty adviors
 void AffiliateDriver::deleteFaculty(){
+  //rollback
+  //BST<Student> *ms = new BST<Student>;
+  //ms = masterStudent
+  //studentStack.push(ms);
+  //BST<Faculty> *mf = new BST<Faculty>;
+  //mf = masterFaculty
+  //facultyStack.push(mf);
   int fID = checkID("faculty");
   if (masterFaculty->searchNode(fID)){
     Faculty *f = new Faculty();
@@ -771,5 +801,10 @@ void AffiliateDriver::removeAdviseeF(){
 
 // Undo's the previous action that has changed the shape of BST
 void AffiliateDriver::rollback(){
-  //NOT DONE
+  //try{
+  //  masterStudent = studentStack.pop();
+  //  masterFaculty = facultyStack.pop();
+  //}catch(EmptyStackException e){
+  //  cerr << "Nothing to rollback." << endl;
+  //}
 }

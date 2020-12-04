@@ -51,5 +51,6 @@ class AffiliateDriver{
     int numStudents;
     BST<Student> *masterStudent;
     BST<Faculty> *masterFaculty;
-    GenStack<int> *rollbackStack; //don't know what we should save here
+    GenStack<Student> *studentStack;
+    GenStack<Faculty> *facultyStack;
 };

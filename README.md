@@ -16,7 +16,7 @@ A C++ program that implements a simple database system using binary search trees
 ## Known Errors
 1. Can't remove students
 2. Can't change Advisors
-3. Rollback doesn't work
+3. Rollback doesn't work - commented out
 4. Given a faculty id, can't print the name of all the advisees
 5. can't delete a faculty member given the id.
 6. Can't remove an advisee from a faculty member given the ids
